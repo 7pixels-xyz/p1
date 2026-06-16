@@ -1,0 +1,810 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Add vintage photography portfolio styles */
+:root {
+  --sepia-dark: #3e2723;
+  --sepia-mid: #5d4037;
+  --sepia-light: #d7ccc8;
+  --paper: #f4ecd8;
+  --accent: #8d6e63;
+  --grain: url("https://www.transparenttextures.com/patterns/felt-paper.png");
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--sepia-dark);
+  font-family: "Courier Prime", monospace;
+  overflow-x: hidden;
+  /* Make body width responsive */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0px auto;
+  position: relative;
+  /* Add horizontal padding for mobile */
+  padding: 0 20px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: var(--grain);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+header {
+  /* Make header padding responsive */
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 2px solid rgba(62, 39, 35, 0.1);
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.camera-icon {
+  width: 60px;
+  height: 60px;
+  opacity: 0.8;
+  filter: sepia(1);
+}
+
+h1 {
+  font-family: "Special Elite", cursive;
+  /* Make heading responsive */
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  /* Make subtitle responsive */
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  letter-spacing: 2px;
+}
+
+nav {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  /* Make nav responsive with wrapping */
+  gap: 20px;
+  flex-wrap: wrap;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--sepia-dark);
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  border-bottom: 1px solid var(--sepia-dark);
+}
+
+.hero {
+  /* Make hero responsive with flex direction change */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Add desktop layout for hero */
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    padding: 80px 40px;
+    gap: 60px;
+  }
+}
+
+.hero-image-frame {
+  position: relative;
+  padding: 20px 20px 80px;
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px;
+  transform: rotate(-2deg);
+  /* Make frame responsive */
+  width: 100%;
+  max-width: 500px;
+}
+
+.hero-image-frame img {
+  /* Make image responsive */
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  max-height: 600px;
+  object-fit: cover;
+  filter: sepia(0.4) contrast(1.1) brightness(0.9);
+}
+
+.hero-text {
+  flex: 1 1 0%;
+}
+
+.hero-text h2 {
+  font-family: "Special Elite", cursive;
+  /* Make hero heading responsive */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.hero-text p {
+  /* Make hero text responsive */
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: var(--sepia-mid);
+}
+
+.film-strip-container {
+  background: rgb(26, 26, 26);
+  /* Make film strip padding responsive */
+  padding: 40px 0px;
+  margin: 40px 0px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Add desktop spacing for film strip */
+@media (min-width: 768px) {
+  .film-strip-container {
+    padding: 60px 0px;
+    margin: 80px 0px;
+  }
+}
+
+.film-strip {
+  display: flex;
+  gap: 15px;
+  padding: 0px 20px;
+  background-image: radial-gradient(circle, rgb(238, 238, 238) 30%, transparent 31%),
+    radial-gradient(circle, rgb(238, 238, 238) 30%, transparent 31%);
+  background-size: 40px 40px;
+  background-position: 0px 10px, 0px 250px;
+  background-repeat: repeat-x;
+  /* Enable horizontal scrolling on mobile */
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sepia-mid) transparent;
+}
+
+/* Add desktop padding for film strip */
+@media (min-width: 768px) {
+  .film-strip {
+    padding: 0px 40px;
+  }
+}
+
+.film-frame {
+  /* Make film frames responsive */
+  min-width: 280px;
+  height: 200px;
+  background: rgb(0, 0, 0);
+  border: 2px solid rgb(51, 51, 51);
+  overflow: hidden;
+}
+
+/* Add desktop sizing for film frames */
+@media (min-width: 768px) {
+  .film-frame {
+    min-width: 350px;
+    height: 250px;
+  }
+}
+
+.film-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  filter: grayscale(0.3) contrast(1.2);
+  transition: transform 0.5s;
+}
+
+.film-frame:hover img {
+  transform: scale(1.1);
+}
+
+.polaroid-section {
+  /* Make polaroid section responsive */
+  padding: 40px 20px;
+}
+
+/* Add desktop padding for polaroid section */
+@media (min-width: 768px) {
+  .polaroid-section {
+    padding: 80px 40px;
+  }
+}
+
+.section-title {
+  font-family: "Special Elite", cursive;
+  text-align: center;
+  /* Make section title responsive */
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Add desktop spacing for section title */
+@media (min-width: 768px) {
+  .section-title {
+    margin-bottom: 60px;
+  }
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--sepia-dark);
+  margin: 15px auto;
+}
+
+.polaroid-grid {
+  display: grid;
+  /* Make grid responsive */
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+/* Add tablet layout for polaroid grid */
+@media (min-width: 640px) {
+  .polaroid-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Add desktop layout for polaroid grid */
+@media (min-width: 1024px) {
+  .polaroid-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+}
+
+.polaroid {
+  background: rgb(255, 255, 255);
+  padding: 15px 15px 60px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 15px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.polaroid img {
+  width: 100%;
+  /* Make polaroid image height responsive */
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: sepia(0.2) contrast(1.05);
+}
+
+.polaroid:nth-child(2n + 1) {
+  transform: rotate(2deg);
+}
+
+.polaroid:nth-child(2n) {
+  transform: rotate(-2deg);
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 10;
+}
+
+.polaroid-caption {
+  font-family: "Courier Prime", monospace;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgb(85, 85, 85);
+}
+
+.timeline-section {
+  /* Make timeline section responsive */
+  padding: 40px 20px;
+  background: rgba(141, 110, 99, 0.05);
+}
+
+/* Add desktop padding for timeline section */
+@media (min-width: 768px) {
+  .timeline-section {
+    padding: 80px 40px;
+  }
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0px auto;
+  position: relative;
+  padding: 40px 0px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  /* Position timeline line based on screen size */
+  left: 20px;
+  width: 2px;
+  height: 100%;
+  background: var(--sepia-mid);
+  opacity: 0.3;
+}
+
+/* Center timeline line on desktop */
+@media (min-width: 768px) {
+  .timeline::before {
+    left: 50%;
+  }
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  /* Make timeline items full width on mobile */
+  width: 100%;
+  padding-left: 50px;
+  position: relative;
+  text-align: left;
+}
+
+/* Restore alternating layout on desktop */
+@media (min-width: 768px) {
+  .timeline-item {
+    margin-bottom: 60px;
+    width: 45%;
+    padding-left: 0;
+  }
+
+  .timeline-item:nth-child(2n + 1) {
+    float: left;
+    text-align: right;
+  }
+
+  .timeline-item:nth-child(2n) {
+    float: right;
+    text-align: left;
+  }
+}
+
+.timeline-date {
+  font-family: "Special Elite", cursive;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.timeline-content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: var(--sepia-dark);
+  border-radius: 50%;
+  /* Position dot for mobile */
+  left: 14px;
+}
+
+/* Position dots for desktop */
+@media (min-width: 768px) {
+  .timeline-item:nth-child(2n + 1)::after {
+    left: auto;
+    right: -56px;
+  }
+
+  .timeline-item:nth-child(2n)::after {
+    left: -56px;
+  }
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.clients-section {
+  /* Make clients section responsive */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Add desktop padding for clients section */
+@media (min-width: 768px) {
+  .clients-section {
+    padding: 80px 40px;
+  }
+}
+
+.client-grid {
+  display: flex;
+  /* Make client grid responsive with wrapping */
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  filter: grayscale(1) opacity(0.6) sepia(1);
+  margin-top: 30px;
+}
+
+/* Add desktop spacing for client grid */
+@media (min-width: 768px) {
+  .client-grid {
+    gap: 80px;
+    margin-top: 40px;
+  }
+}
+
+.client-logo {
+  font-family: "Special Elite", cursive;
+  /* Make client logo responsive */
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  border: 2px solid var(--sepia-dark);
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.contact-section {
+  /* Make contact section responsive */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Add desktop padding for contact section */
+@media (min-width: 768px) {
+  .contact-section {
+    padding: 100px 40px;
+  }
+}
+
+.postcard {
+  /* Make postcard responsive */
+  width: 100%;
+  max-width: 900px;
+  min-height: 550px;
+  height: auto;
+  background: rgb(253, 248, 225);
+  box-shadow: rgba(0, 0, 0, 0.05) 10px 10px 0px;
+  border: 1px solid rgb(221, 221, 221);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  position: relative;
+}
+
+/* Add desktop layout for postcard */
+@media (min-width: 768px) {
+  .postcard {
+    flex-direction: row;
+    padding: 40px;
+  }
+}
+
+.postcard::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/pinstripe.png") 30 / 1 / 0 round;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.postcard-left {
+  flex: 1 1 0%;
+  /* Make postcard left responsive */
+  padding-right: 0;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+/* Restore desktop layout for postcard left */
+@media (min-width: 768px) {
+  .postcard-left {
+    padding-right: 40px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+  }
+}
+
+.postcard-right {
+  flex: 1 1 0%;
+  /* Make postcard right responsive */
+  padding-left: 0;
+  position: relative;
+}
+
+/* Add desktop padding for postcard right */
+@media (min-width: 768px) {
+  .postcard-right {
+    padding-left: 40px;
+  }
+}
+
+.stamp {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  /* Make stamp responsive */
+  width: 70px;
+  height: 85px;
+  border: 4px double rgb(141, 110, 99);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+/* Add desktop sizing for stamp */
+@media (min-width: 768px) {
+  .stamp {
+    width: 100px;
+    height: 120px;
+  }
+}
+
+.stamp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(1);
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-image: initial;
+  border-bottom: 1px solid rgb(153, 153, 153);
+  font-family: "Courier Prime", monospace;
+  font-size: 1rem;
+  padding: 8px 0px;
+  outline: none;
+}
+
+.address-lines {
+  /* Adjust margin for responsive layout */
+  margin-top: 100px;
+}
+
+/* Add desktop spacing for address lines */
+@media (min-width: 768px) {
+  .address-lines {
+    margin-top: 150px;
+  }
+}
+
+.address-line {
+  border-bottom: 1px solid rgb(153, 153, 153);
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.send-btn {
+  background: var(--sepia-dark);
+  color: var(--paper);
+  border: none;
+  padding: 12px 30px;
+  font-family: "Special Elite", cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: opacity 0.3s;
+}
+
+.send-btn:hover {
+  opacity: 0.9;
+}
+
+footer {
+  padding: 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.grain-texture {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 10000;
+}
